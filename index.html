@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="alternate" media="handheld"  />
+	<!-- end 云适配 -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>趣实习网-高效的实习生招聘平台</title>
+	<meta property="qc:admins" content="23635710066417756375" />
+	<meta name="baidu-site-verification" content="QIQ6KC1oZ6" />
+ 
+
+	<link rel="Shortcut Icon" href="__PUBLIC__/images/favicon.ico">
+
+    <link rel="stylesheet" href="__PUBLIC__/HomeStyle/css/qushixi.css">		 
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/HomeStyle/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/HomeStyle/css/external.min.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/HomeStyle/css/popup.css"/>
+
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/HomeStyle/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/icon.css"> 
+	<include file = "Public/baidu" nav="head" />
+</head>
+
+<body>
+	<div id="body">
+
+		<!-- begin header -->
+		<include file="Public/header" nav='index' />
+ 		<div class="banner-box">
+			<div class="bd">
+		        <ul> 
+		            <li>
+		                <div class="m-width">
+		                <a href="http://www.qushixi.net/index.php/Home/Index/showCompany/id/1350.html"><img src="__PUBLIC__/HomeStyle/images/banner04.jpg" /></a>
+		                </div>
+		            </li>          	    
+		            <li>
+		                <div class="m-width">
+		                <a href="http://www.qushixi.net/index.php/Home/Index/showCompany/id/1147.html"><img src="__PUBLIC__/HomeStyle/images/banner05.jpg" /></a>
+		                </div>
+		            </li>
+		            <li>
+		                <div class="m-width">
+		                <a href="javascript:void(0);"><img src="__PUBLIC__/HomeStyle/images/banner03.jpg" /></a>
+		                </div>
+		            </li>
+		            <li>
+		                <div class="m-width">
+		                <a href="http://www.qushixi.net/index.php/Home/Index/showCompany/id/587.html"><img src="__PUBLIC__/HomeStyle/images/banner02.jpg" /></a>
+		                </div>
+		            </li> 
+		         
+		        </ul>
+		    </div>
+		    <div class="banner-btn">
+		        <a class="prev" href="javascript:void(0);"></a>
+		        <a class="next" href="javascript:void(0);"></a>
+		        <div class="hd"><ul></ul></div>
+		    </div>
+		    <div class="content-footer hide-sm"> 
+		    	<div class="searchbar">
+	                <form   action="{:U('Search/index')}" method="get">
+	                  
+	                  <!-- <div class="searchtype_arrow"></div> -->
+	                  <input type="text" id="search_input" name = "keyword"  tabindex="1" value=""  placeholder="请输入 职位名称 或者 公司名称"  />
+	                  <input type="submit" id="search_button" value="搜索" />
+	                </form> 
+	            </div>
+		    </div>
+		</div> 
+		<div id="container"> 
+			<!--搜索框 结束-->
+			<!--热门搜索 开始-->
+			<dl class="hotSearch">
+			</dl>
+			
+			
+				<!--右侧竖条轮播 结束-->
+			<ul id="da-thumbs" class="da-thumbs">
+				<foreach name="adverts" item="vo" >
+				<li >
+					<a href="{:U('Index/showCompany',array('id'=>$vo['id']))}" target="_blank">
+						<img src="{$vo.logo}" width="100" height="100" alt="" />
+						<div class="hot_info">
+							<h2 title="{$vo.short_name}">{$vo.short_name}</h2>
+							<em></em>
+							<p title="{$vo.one_desc}">{$vo.one_desc}</p>
+						</div>
+					</a>
+				</li>					
+				</foreach>					
+			</ul>
+			<!--左侧职位列表开始-->
+			<div id="sidebar"><!--id="sidebar"-->
+				<div class="mainNavs">
+					<!--1 begin-->
+					<foreach name="cates" item="vo" >
+					    <div class="menu_box" style="float:left">
+							<div class="menu_main" style="cursor:pointer">
+								 {$vo['name']} 
+							</div>
+							<div class="job-triangle dn"></div>
+							<div class="menu_sub dn">
+								
+								<dl class="reset">
+									<foreach name="vo['sub']" item="v">
+										<if condition="$v['pid'] eq $vo['id']">
+											<dt style="margin-bottom:10px">
+												<a href="{:U('Search/index',array('job'=>$v['name']))}">{$v['name']}</a>
+											</dt>
+										</if>								
+										<dd> 
+										<foreach name="v['sub']" item = "o">  
+											<if condition = "$o['pid'] eq $v['id']">
+												<a href="{:U('Search/index',array('job'=>$o['name']))}">{$o['name']}</a>
+											</if>
+										</foreach>
+										</dd>		
+									</foreach>			
+								</dl>
+							</div>
+
+
+						</div>
+					</foreach>
+					<!--1 end-->
+				</div>
+				<!-- <a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a> -->
+			</div>
+			<!--左侧职位列表 结束-->
+
+			<div class="clear"></div>
+			<!--友情链接框 开始-->
+
+			<input type="hidden" id="resubmitToken" value="" />
+			<a id="backtop" title="回到顶部" rel="nofollow"></a>
+		</div>
+		<div class="job-bg">
+			<!--下部广告位 结束-->
+			<div class="job-title"> 
+				<ul class="reset " id="check_position"><!--class="hotabbing"-->
+					<li class="active">最新职位</li>
+					<li>热门职位</li>
+				</ul>
+			</div>
+				<!--职位详情框 开始-->
+				<div id="hotList">
+
+					<!--最新职位详情 开始-->
+					<ul class="hot_pos reset">
+						
+						<foreach name="newjob" item="vo" >
+						<li class="odd clearfix" style="line-height:31px">	 
+							<div class="job-inf">
+								<div class="job-inf-detail">
+								<div class="ov_hide">	 
+									<a href="{:U('JobShow/index',array('jid'=>$vo['id']))}" target="_blank" class="under_ani_jobname"><h3>{$vo.name}</h3></a>
+								
+								    <div class="recompany">
+										<a href="{:U('Index/showCompany',array('id'=>$vo['company']['id']))}" target="_blank">{$vo.company.dname}</a>
+									</div>  
+								    <i class="fa fa-map-marker"></i>
+									<span class="c9">{$vo.city}</span> 
+								 
+									<i class="fa fa-yen"></i>
+									<span><em class="c7"></em>{$vo.salary_low}-{$vo.salary_high}/天</span> 
+								 
+									<i class="fa fa-calendar-o"></i>
+									<span><em class="c7"></em>{$vo.nature}</span>
+								 
+									<a href="{:U('JobShow/index',array('jid'=>$vo['id']))}" class="resumeImg job-img"
+                                        target="_blank" title="点我查看职位">
+                                            <if condition="$vo['company']['logo'] eq ''">
+                                            <!-- <if condition="$vo.company.logo eq ''"> -->
+                                            		<img src="__PUBLIC__/HomeStyle/images/icon_comany_default.png" height="69" width="69">
+                                            <else />
+                                            		<img src="{$vo.company.logo}" height="69" width="69">
+                                            </if>
+                                     </a> 
+								</div>
+							</div>
+						</div>
+						</li>
+						</foreach>
+						<!--白色背景最新职位详情 结束-->
+						<a href="{:U('Search/index')}" class="btn fr" target="_blank">查看更多</a>
+					</ul>
+					<ul class="hot_pos reset dn">
+						<!--白色背景热门职位详情 开始-->
+						
+						<volist name="hotjob" id="vo" offset="0" length='10'>
+						<li class="odd clearfix" style="line-height:31px">
+							<div class="job-inf">
+								<div class="job-inf-detail">
+								<div class="ov_hide">
+									<a href="{:U('JobShow/index',array('jid'=>$vo['id']))}" target="_blank"><h3>{$vo.name}</h3></a>&nbsp;
+								    <div class="recompany">
+										<a href="{:U('Index/showCompany',array('id'=>$vo['company']['id']))}" target="_blank">{$vo.company.dname}</a>
+									</div>  
+								    <i class="fa fa-map-marker"></i>
+									<span class="c9">{$vo.city}</span> 
+								 
+									<i class="fa fa-yen"></i>
+									<span><em class="c7"></em>{$vo.salary_low}-{$vo.salary_high}/天</span> 
+								 
+									<i class="fa fa-calendar-o"></i>
+									<span><em class="c7"></em>{$vo.nature}</span>
+									<a href="{:U('JobShow/index',array('jid'=>$vo['id']))}" class="resumeImg job-img"
+                                        target="_blank" title="点我查看职位">
+                                            <if condition="$vo['company']['logo'] eq ''">
+                                            <!-- <if condition="$vo.company.logo eq ''"> -->
+                                            		<img src="__PUBLIC__/HomeStyle/images/icon_comany_default.png" height="69" width="69">
+                                            <else />
+                                            		<img src="{$vo.company.logo}" height="69" width="69">
+                                            </if>
+                                     </a> 
+                                <!--
+								<span><em class="c7">职位诱惑：</em>{$vo.welfare}</span>
+                                -->
+							</div></div></div>
+						</li>
+						</volist>
+						<!--白色背景热门职位详情 结束-->
+						<a href="{:U('Search/index')}" class="btn fr" target="_blank">查看更多</a>
+					</ul>	
+				</div>
+				<!--职位详情框 结束-->
+		</div>
+		<div id="linkbox">
+			<dl>
+				<dt>友情链接</dt>
+				<dd>
+						<foreach name="friend" item="vo" >
+							<a href="{$vo.url}" target="_blank">{$vo.name}</a> <span>|</span>
+						</foreach>
+				</dd>
+			</dl>
+		</div>
+		<!--友情连接 结束-->
+		<!--右侧内容栏包括搜索框  结束--> 
+	</div>
+	<include file="Public/footer" nav='index' />
+
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/jquery.1.10.1.min.js" ></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/jquery.lib.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/ajaxfileupload.js" ></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/additional-methods.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/Chart.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/home.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/count.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/core.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/popup.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/lazyload-min.js"></script>
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/HomeStyle/js/jquery.SuperSlide.2.1.1.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+	$(".prev,.next").hover(function(){
+		$(this).stop(true,false).fadeTo("show",0.9);
+	},function(){
+		$(this).stop(true,false).fadeTo("show",0.4);
+	});
+	
+	$(".banner-box").slide({
+		titCell:".hd ul",
+		mainCell:".bd ul",
+		effect:"fold",
+		interTime:3500,
+		delayTime:500,
+		autoPlay:true,
+		autoPage:true, 
+		trigger:"click" 
+	});
+
+});
+</script>
+ 
+				<script type="text/javascript">
+			        LazyLoad.css(["/Public/HomeStyle/css/cityStyle.css"], function () {
+			            LazyLoad.js(["/Public/HomeStyle/js/cityScript.js"], function () {
+			                var test = new citySelector.cityInit("inputTest");
+			            });
+			        });
+			        // $("body").click(function() {
+			        // 	$("#js_cityBox").hide();
+			        // });
+
+		        	$('#js_cityBox').children('li').click(function (){
+			    		// $('#addressInput').val($(this).html());
+			    		$('#searchform').submit();
+			    	});
+
+					$('#js_cityBox').children('li').on('click',function(){
+					    var city = $(this).text();
+					    $.post('/setlocationcity',{
+					        'city': city
+					    },function(e){
+					        if(e.code == 100){
+					            window.location.reload();
+					        }
+					    },'json')
+					}); 
+   			   </script>
+ </html>
+ 
+
+ 
